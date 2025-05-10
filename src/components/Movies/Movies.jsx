@@ -1,33 +1,9 @@
 import Movie from "../Movie/Movie"
 import styles from "./Movies.module.css"
-import data from "../../utils/constant/data.js"
-import { useState } from "react";
-import { nanoid } from "nanoid";
 
-function Movies() {
-    // Membuat state movies
-    const [movies, setMovies] = useState(data);
-
-    function handleClick() {
-        // Menggunakan nanoid
-        const movie = {
-            id: nanoid(),
-            title: "Jigsaw Spiral",
-            year: 2021,
-            type: "Movie",
-            poster: "https://picsum.photos/300/400",
-        };
-
-        /**
-         * Update state movies: setMovies
-         * Melakukan teknik spread untuk copy dan merge array
-         */
-        setMovies([...movies, movie]);
-        
-        // Log untuk melihat state setelah diperbarui
-        console.log("Film baru telah ditambahkan:", movie);
-        console.log("Daftar film sekarang:", movies);
-    }
+function Movies(props) {
+    // Menangkap props: state movies
+    const { movies, setMovies } = props;
 
     return(
         <div>
@@ -44,10 +20,7 @@ function Movies() {
                         })}
                     </div>
                 </section>
-                <div className={styles.add_button_container}>
-                    {/* Element button diberikan event click: onClick */}
-                    <button onClick={handleClick}>Add Movie</button>
-                </div>
+                {/* Form telah dipindahkan ke Home.jsx */}
             </div>
         </div>
     )
